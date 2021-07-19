@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Mars Rover Photos</string>
+    <string name="facebook_app_id">345519217045305</string>
+    <string name="fb_login_protocol_scheme">fb345519217045305</string>
+</resources>
+

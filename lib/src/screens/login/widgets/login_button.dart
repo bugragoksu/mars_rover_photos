@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 import '../../../core/extensions/context_extension.dart';
 import '../../../widgets/buttons/rounded_button.dart';
@@ -16,7 +17,9 @@ class _LoginButtonState extends State<LoginButton> {
   bool isLoading = false;
 
   void changeLoading() {
-    isLoading = !isLoading;
+    setState(() {
+      isLoading = !isLoading;
+    });
   }
 
   @override
@@ -25,18 +28,18 @@ class _LoginButtonState extends State<LoginButton> {
       width: context.dynamicWidth(0.75),
       isLoading: isLoading,
       color: Colors.blue,
-      onPressed: () {
-        setState(() {
-          changeLoading();
-        });
-        Future.delayed(Duration(seconds: 2), () {
-          setState(() {
-            changeLoading();
-            widget.onFinish(true, null);
-          });
-        });
+      onPressed: () async {
+        changeLoading();
+        final LoginResult result = await FacebookAuth.instance.login();
+        if (result.status == LoginStatus.success) {
+          final AccessToken accessToken = result.accessToken!;
+          widget.onFinish(true, null);
+        } else {
+          widget.onFinish(false, result.message);
+        }
+        changeLoading();
       },
-      text: 'Facebook ile giris yap',
+      text: 'Continue with Facebook',
     );
   }
 }
