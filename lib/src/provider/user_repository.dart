@@ -5,6 +5,12 @@ enum UserStatus { Init, Authenticated, Authenticating, Unauthenticated }
 
 class UserRepository extends ChangeNotifier {
   Map<String, dynamic>? _userData;
+  Map<String, dynamic>? get userData => _userData;
+  set userData(Map<String, dynamic>? data) {
+    _userData = data;
+    notifyListeners();
+  }
+
   UserStatus _userStatus = UserStatus.Init;
   UserStatus get userStatus => _userStatus;
   set userStatus(UserStatus newStatus) {
@@ -50,7 +56,7 @@ class UserRepository extends ChangeNotifier {
   }
 
   Future<Map<String, dynamic>> getUserData() async {
-    _userData = await FacebookAuth.instance.getUserData();
-    return _userData ?? {};
+    userData = await FacebookAuth.instance.getUserData();
+    return userData ?? {};
   }
 }
