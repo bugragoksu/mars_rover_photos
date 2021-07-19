@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
                   if (success) {
                     print("basarili");
                   } else {
-                    print("hata");
+                    print(errorMessage);
                   }
                 },
               )
