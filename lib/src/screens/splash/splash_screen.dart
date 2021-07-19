@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../provider/user_repository.dart';
+import '../../widgets/custom_indicator.dart';
 import '../home/home_screen.dart';
 import '../login/login_screen.dart';
 
@@ -13,9 +14,7 @@ class SplashScreen extends StatelessWidget {
     checkAndNavigateUser(userStatus, context);
     return Scaffold(
       body: Center(
-        child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-        ),
+        child: CustomIndicator(),
       ),
     );
   }

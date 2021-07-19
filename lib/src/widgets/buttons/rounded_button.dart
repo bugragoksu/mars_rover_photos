@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mars_rover_photos/src/widgets/custom_indicator.dart';
 
 import '../../style/button_theme_contants.dart';
 
@@ -30,9 +31,7 @@ class RoundedButton extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: isLoading
-              ? CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                )
+              ? CustomIndicator()
               : Text(
                   text,
                   style: GoogleFonts.jost(fontSize: 22),
