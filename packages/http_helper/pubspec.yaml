@@ -1,4 +1,4 @@
-name: rover_repository
+name: http_helper
 description: A new Flutter package project.
 version: 0.0.1
 author:
@@ -11,8 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http_helper:
-    path: ../http_helper
+  dio: ^4.0.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

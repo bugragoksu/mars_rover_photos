@@ -32,6 +32,8 @@ dependencies:
 
   rover_repository:
     path: packages/rover_repository
+  http_helper:
+    path: packages/http_helper
 
 dev_dependencies:
   flutter_test:
