@@ -2,8 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-
-import '../model/rover_model.dart';
+import 'package:rover_repository/rover_repository.dart';
 
 part 'rover_event.dart';
 part 'rover_state.dart';
@@ -19,7 +18,7 @@ class RoverBloc extends Bloc<RoverEvent, RoverState> {
       try {
         yield RoverFetching();
         //fetch
-        yield RoverFetched(Rover(photos: []));
+        yield RoverFetched(RoverModel(photos: []));
       } catch (e) {
         yield RoverFetchFailed(e.toString());
       }

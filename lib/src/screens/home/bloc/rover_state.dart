@@ -8,7 +8,7 @@ class RoverInitial extends RoverState {}
 class RoverFetching extends RoverState {}
 
 class RoverFetched extends RoverState {
-  final Rover rover;
+  final RoverModel rover;
 
   RoverFetched(this.rover);
 }

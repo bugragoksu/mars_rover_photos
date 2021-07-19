@@ -1,13 +1,13 @@
-Rover roverFromJson(dynamic json) => Rover.fromJson(json);
+RoverModel roverFromJson(dynamic json) => RoverModel.fromJson(json);
 
-class Rover {
-  Rover({
+class RoverModel {
+  RoverModel({
     required this.photos,
   });
 
   List<Photo> photos;
 
-  factory Rover.fromJson(Map<String, dynamic> json) => Rover(
+  factory RoverModel.fromJson(Map<String, dynamic> json) => RoverModel(
         photos: List<Photo>.from(json["photos"].map((x) => Photo.fromJson(x))),
       );
 

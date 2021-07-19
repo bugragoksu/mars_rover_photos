@@ -30,6 +30,9 @@ dependencies:
   google_fonts: ^2.1.0
   provider: ^5.0.0
 
+  rover_repository:
+    path: packages/rover_repository
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
