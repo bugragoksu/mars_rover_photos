@@ -14,7 +14,8 @@ class ImageCard extends StatelessWidget {
           height: context.dynamicHeight(0.35),
           child: Text(''),
           decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage(imagePath)),
+              image: DecorationImage(
+                  image: NetworkImage(imagePath), fit: BoxFit.fill),
               borderRadius: BorderRadius.circular(30)),
         ));
   }

@@ -6,6 +6,6 @@ List<String> cameraTypes = [
   'MAHLI',
   'MARDI',
   'NAVCAM',
-  'PAVCAM',
+  'PANCAM',
   'MINITES'
 ];

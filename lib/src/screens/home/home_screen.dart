@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:rover_repository/rover_repository.dart';
 
+import '../../data/camera_type_list.dart';
+import '../../data/type_list.dart';
 import '../../provider/user_repository.dart';
+import 'bloc/rover_bloc.dart';
 import 'camera_page.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,7 +16,20 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentPageIndex = 0;
+  String currentCameraType = cameraTypes[0];
   PageController _pageController = PageController();
+  void onCameraTypeChange(String? cameraType) {
+    currentCameraType = cameraType!;
+    sendRequest();
+  }
+
+  void sendRequest() {
+    BlocProvider.of<RoverBloc>(context).add(RoverFetchEvent(
+        model: RoverRequestModel(
+            type: typeList[_currentPageIndex].toLowerCase(),
+            cameraType: currentCameraType)));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,13 +44,17 @@ class _HomeScreenState extends State<HomeScreen> {
             setState(() {
               _currentPageIndex = index;
             });
+            sendRequest();
           },
           children: [
             CameraPage(
-              type: 'Curisiotiy',
+              onCameraTypeChanged: onCameraTypeChange,
+              type: typeList[0],
             ),
-            CameraPage(type: 'Opportunity'),
-            CameraPage(type: 'Spirit'),
+            CameraPage(
+                onCameraTypeChanged: onCameraTypeChange, type: typeList[1]),
+            CameraPage(
+                onCameraTypeChanged: onCameraTypeChange, type: typeList[2]),
           ],
         ),
       )),
@@ -48,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
           _pageController.animateToPage(index,
               duration: Duration(milliseconds: 300), curve: Curves.easeIn);
         });
+        sendRequest();
       },
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(

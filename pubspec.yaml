@@ -23,17 +23,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  http_helper:
+    path: packages/http_helper
+  rover_repository:
+    path: packages/rover_repository
   bloc: ^7.0.0
   cupertino_icons: ^1.0.2
+  flutter_bloc: ^7.0.1
   flutter_facebook_auth: ^3.5.0
   fluttertoast: ^8.0.7
   google_fonts: ^2.1.0
   provider: ^5.0.0
-
-  rover_repository:
-    path: packages/rover_repository
-  http_helper:
-    path: packages/http_helper
 
 dev_dependencies:
   flutter_test:

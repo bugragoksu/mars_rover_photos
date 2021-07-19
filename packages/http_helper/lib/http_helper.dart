@@ -12,7 +12,7 @@ class HttpHelper {
       final res = await dio.get(endpoint);
       return res.data;
     } on DioError catch (e) {
-      throw Exception(e);
+      throw Exception(e.response?.data['error'] ?? e.message);
     }
   }
 }

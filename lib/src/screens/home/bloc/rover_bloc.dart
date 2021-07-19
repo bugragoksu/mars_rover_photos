@@ -8,8 +8,8 @@ part 'rover_event.dart';
 part 'rover_state.dart';
 
 class RoverBloc extends Bloc<RoverEvent, RoverState> {
-  RoverBloc() : super(RoverInitial());
-
+  RoverBloc(this.roverRepository) : super(RoverInitial());
+  final RoverRepository roverRepository;
   @override
   Stream<RoverState> mapEventToState(
     RoverEvent event,
@@ -17,8 +17,8 @@ class RoverBloc extends Bloc<RoverEvent, RoverState> {
     if (event is RoverFetchEvent) {
       try {
         yield RoverFetching();
-        //fetch
-        yield RoverFetched(RoverModel(photos: []));
+        var result = await roverRepository.getRover(model: event.model);
+        yield RoverFetched(result);
       } catch (e) {
         yield RoverFetchFailed(e.toString());
       }

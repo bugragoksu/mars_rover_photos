@@ -4,7 +4,7 @@ part of 'rover_bloc.dart';
 abstract class RoverEvent {}
 
 class RoverFetchEvent extends RoverEvent {
-  final String roverType;
+  final RoverRequestModel model;
 
-  RoverFetchEvent(this.roverType);
+  RoverFetchEvent({required this.model});
 }
