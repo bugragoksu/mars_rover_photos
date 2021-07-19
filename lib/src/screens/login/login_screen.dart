@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mars_rover_photos/src/screens/home/home_screen.dart';
 
 import '../../core/constants/path_constants.dart';
 import '../../core/extensions/context_extension.dart';
@@ -20,9 +22,11 @@ class LoginScreen extends StatelessWidget {
               LoginButton(
                 onFinish: (bool success, String? errorMessage) {
                   if (success) {
-                    print("basarili");
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (_) => HomeScreen()),
+                        (route) => false);
                   } else {
-                    print(errorMessage);
+                    Fluttertoast.showToast(msg: errorMessage!);
                   }
                 },
               )

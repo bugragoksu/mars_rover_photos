@@ -12,6 +12,10 @@ class UserRepository extends ChangeNotifier {
     notifyListeners();
   }
 
+  UserRepository() {
+    checkLoggedIn();
+  }
+
   Future<void> checkLoggedIn() async {
     try {
       var accessToken = await FacebookAuth.instance.accessToken;
