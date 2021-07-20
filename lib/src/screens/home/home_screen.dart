@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mars_rover_photos/src/screens/splash/splash_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:rover_repository/rover_repository.dart';
 
@@ -35,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(context),
+      appBar: _buildAppBar,
       bottomNavigationBar: _buildBottomNavigationBar,
       body: SafeArea(
           child: Padding(
@@ -96,14 +97,24 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  AppBar _buildAppBar(BuildContext context) {
+  AppBar get _buildAppBar {
     return AppBar(
       title: Text("Welcome " + getName()),
+      actions: [
+        IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () async {
+              await context.read<UserRepository>().logout();
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (_) => SplashScreen()),
+                  (route) => false);
+            })
+      ],
     );
   }
 
   String getName() {
-    return context.read<UserRepository>().userData == null
+    return context.watch<UserRepository>().userData == null
         ? ""
         : context.read<UserRepository>().userData!['name'].toString();
   }

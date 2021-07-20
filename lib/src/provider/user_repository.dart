@@ -59,4 +59,10 @@ class UserRepository extends ChangeNotifier {
     userData = await FacebookAuth.instance.getUserData();
     return userData ?? {};
   }
+
+  Future<void> logout() async {
+    await FacebookAuth.instance.logOut();
+    userData = null;
+    userStatus = UserStatus.Unauthenticated;
+  }
 }
