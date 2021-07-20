@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 class CameraDropdown extends StatefulWidget {
   final List<String> items;
   final Function(String? newValue) onChanged;
-
-  const CameraDropdown({Key? key, required this.items, required this.onChanged})
+  final String selectedValue;
+  const CameraDropdown(
+      {Key? key,
+      required this.selectedValue,
+      required this.items,
+      required this.onChanged})
       : super(key: key);
   @override
   _CameraDropdownState createState() => _CameraDropdownState();
@@ -15,7 +19,7 @@ class _CameraDropdownState extends State<CameraDropdown> {
   @override
   void initState() {
     super.initState();
-    _selectedCameraType = widget.items[0];
+    _selectedCameraType = widget.selectedValue;
   }
 
   @override

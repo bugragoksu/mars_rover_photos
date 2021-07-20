@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mars_rover_photos/src/screens/home/bloc/rover_bloc.dart';
-import 'package:mars_rover_photos/src/widgets/custom_indicator.dart';
 
 import '../../data/camera_type_list.dart';
+import '../../widgets/custom_indicator.dart';
 import '../../widgets/lists/image_list.dart';
+import 'bloc/rover_bloc.dart';
 import 'widgets/camera_dropdown.dart';
 
 class CameraPage extends StatelessWidget {
   final String type;
+  final String selectedCameraTypeValue;
   final Function(String? newType) onCameraTypeChanged;
 
-  CameraPage({Key? key, required this.type, required this.onCameraTypeChanged})
+  CameraPage(
+      {Key? key,
+      required this.selectedCameraTypeValue,
+      required this.type,
+      required this.onCameraTypeChanged})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -41,7 +46,9 @@ class CameraPage extends StatelessWidget {
           Expanded(flex: 2, child: Text('Camera Type : ')),
           Expanded(
             child: CameraDropdown(
-                items: cameraTypes, onChanged: onCameraTypeChanged),
+                selectedValue: selectedCameraTypeValue,
+                items: cameraTypes,
+                onChanged: onCameraTypeChanged),
           ),
         ],
       )),

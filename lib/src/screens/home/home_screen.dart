@@ -19,7 +19,9 @@ class _HomeScreenState extends State<HomeScreen> {
   String currentCameraType = cameraTypes[0];
   PageController _pageController = PageController();
   void onCameraTypeChange(String? cameraType) {
-    currentCameraType = cameraType!;
+    setState(() {
+      currentCameraType = cameraType!;
+    });
     sendRequest();
   }
 
@@ -48,13 +50,18 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           children: [
             CameraPage(
+              selectedCameraTypeValue: currentCameraType,
               onCameraTypeChanged: onCameraTypeChange,
               type: typeList[0],
             ),
             CameraPage(
-                onCameraTypeChanged: onCameraTypeChange, type: typeList[1]),
+                selectedCameraTypeValue: currentCameraType,
+                onCameraTypeChanged: onCameraTypeChange,
+                type: typeList[1]),
             CameraPage(
-                onCameraTypeChanged: onCameraTypeChange, type: typeList[2]),
+                selectedCameraTypeValue: currentCameraType,
+                onCameraTypeChanged: onCameraTypeChange,
+                type: typeList[2]),
           ],
         ),
       )),
