@@ -39,27 +39,27 @@ class CameraPage extends StatelessWidget {
   }
 
   Widget _buildBody(List<String> imgList) {
-    return imgList.isEmpty
-        ? Center(child: Text('No items found'))
-        : Column(children: [
-            Expanded(
-                child: Row(
-              children: [
-                Expanded(flex: 2, child: Text('Camera Type : ')),
-                Expanded(
-                  child: CameraDropdown(
-                      selectedValue: selectedCameraTypeValue,
-                      items: cameraTypes,
-                      onChanged: onCameraTypeChanged),
-                ),
-              ],
-            )),
-            Expanded(
-              flex: 10,
-              child: ImageList(
+    return Column(children: [
+      Expanded(
+          child: Row(
+        children: [
+          Expanded(flex: 2, child: Text('Camera Type : ')),
+          Expanded(
+            child: CameraDropdown(
+                selectedValue: selectedCameraTypeValue,
+                items: cameraTypes,
+                onChanged: onCameraTypeChanged),
+          ),
+        ],
+      )),
+      Expanded(
+        flex: 10,
+        child: imgList.isEmpty
+            ? Center(child: Text('No items found'))
+            : ImageList(
                 imageList: imgList,
               ),
-            )
-          ]);
+      )
+    ]);
   }
 }
