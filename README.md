@@ -1,16 +1,25 @@
-# mars_rover_photos
+# Mars Rover Photos
 
-A new Flutter project.
+Flutter Project by using NASA ROVERS API
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+ - BLoC
+ - Provider
+ - Clean Architecture
+ - Facebook Login
+## Screenshots
+<table>
+    <tr>
+        <td><img src="screenshots/login.png" width="300"></td>
+        <td><img src="screenshots/home.png" width="300"></td>
+    </tr>
+</table>
 
-A few resources to get you started if this is your first Flutter project:
+## Test Account
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Email : test_hvposul_user@tfbnw.net
+Password : 123456test
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🤓 Author
+**Buğra Göksu** [![Twitter Follow](https://img.shields.io/twitter/follow/bugragoksu.svg?style=social)](https://twitter.com/bugragoksu)
